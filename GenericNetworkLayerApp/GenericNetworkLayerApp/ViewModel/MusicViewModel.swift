@@ -10,7 +10,7 @@ import Combine
 import UIKit
 
 @MainActor
-final class MusicViewModel : ObservableObject {
+final class MusicViewModel : ObservableObject, Sendable {
     private let client = HttpClient()
     @Published private(set) var model : [Model] = []
     @Published private(set) var errorMessage: String = ""

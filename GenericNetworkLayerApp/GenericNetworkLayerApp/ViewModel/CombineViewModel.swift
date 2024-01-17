@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class CombineViewModel: ObservableObject {
     private let client = HttpClient()
     private(set) var errorMessage: String?
@@ -19,14 +18,17 @@ class CombineViewModel: ObservableObject {
         return URLRequest(url: url)
     }()
 
-     func fetchRequest() async {
-        do {
-            let container = try await client.fetchDataFromServer(type: ModelContainer<Model>.self , with: APIs.characters.request) //request
-            self.employees = container.results.map{$0}
-        } catch {
-            self.setError(error.localizedDescription)
+    func fetchRequest() {
+        Task.init {
+            do {
+                let container = try await client.fetchDataFromServer(type: ModelContainer<Model>.self , with: APIs.characters.request) //request
+                self.employees = container.results.map{$0}
+            } catch {
+                self.setError(error.localizedDescription)
+            }
         }
     }
+    
     private func setError(_ message: String) {
         self.errorMessage = message
     }

@@ -29,6 +29,14 @@ extension ModelLisCell : ViewModelInjectable {
 class ModelLisCell: UITableViewCell {
 
     static let reuseID  = "ModelLisCell"
+    private lazy var indicatorView: UIActivityIndicatorView! = {
+        let indicator = UIActivityIndicatorView()
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.style = .large
+        indicator.startAnimating()
+        return indicator
+    }()
+    private var valueObservation : NSKeyValueObservation!
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -55,6 +63,7 @@ class ModelLisCell: UITableViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 12.0
         imageView.clipsToBounds = true
+        imageView.backgroundColor = .cyan
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -73,8 +82,6 @@ class ModelLisCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    
     private func configureCEll() {
         let marginGuide = contentView.layoutMarginsGuide
         let stackView = UIStackView(arrangedSubviews: [titleLabel, titleLabelTwo])
@@ -83,7 +90,7 @@ class ModelLisCell: UITableViewCell {
         stackView.distribution = .equalCentering
         stackView.backgroundColor = .yellow
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubviews(profileImageView, stackView)
+        contentView.addSubviews(profileImageView, stackView, indicatorView)
         stackView.accessibilityIdentifier = "characterImage"
         NSLayoutConstraint.activate([
             profileImageView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 10),
@@ -97,7 +104,21 @@ class ModelLisCell: UITableViewCell {
             stackView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 10),
             stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             contentView.bottomAnchor.constraint(greaterThanOrEqualTo: stackView.bottomAnchor, constant: 10),
+            indicatorView.centerXAnchor.constraint(equalTo: profileImageView.centerXAnchor),
+            indicatorView.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor)
         ])
+//        let constraint = titleLabelTwo.heightAnchor.constraint(equalTo: titleLabelTwo.heightAnchor)
+//        constraint.priority = UILayoutPriority(1000)
+//        constraint.isActive = true
+//        titleLabelTwo.setContentHuggingPriority(UILayoutPriority(999) , for: .vertical)
+        valueObservation = profileImageView.observe(\.image, options: [.new]) { [unowned self] observed, change in
+          if change.newValue is UIImage {
+            indicatorView.stopAnimating()
+          }
+        }
+    }
+    deinit {
+        self.valueObservation.invalidate()
     }
 }
 extension UIView {

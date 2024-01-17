@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		455BB1B22B509D6600C0922D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BB1B12B509D6600C0922D /* AppDelegate.swift */; };
 		455BB1B42B509D6600C0922D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BB1B32B509D6600C0922D /* SceneDelegate.swift */; };
-		455BB1B62B509D6600C0922D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BB1B52B509D6600C0922D /* ViewController.swift */; };
 		455BB1B92B509D6600C0922D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 455BB1B72B509D6600C0922D /* Main.storyboard */; };
 		455BB1BB2B509D6700C0922D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 455BB1BA2B509D6700C0922D /* Assets.xcassets */; };
 		455BB1BE2B509D6700C0922D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 455BB1BC2B509D6700C0922D /* LaunchScreen.storyboard */; };
@@ -26,11 +25,8 @@
 		455BB20C2B53579700C0922D /* ImageCacheble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BB20B2B53579700C0922D /* ImageCacheble.swift */; };
 		455BB2112B5637E500C0922D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BB2102B5637E500C0922D /* Observable.swift */; };
 		455BB2142B5638C100C0922D /* ObservableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BB2132B5638C100C0922D /* ObservableViewModel.swift */; };
-		455BB2162B563A8F00C0922D /* ObservableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BB2152B563A8F00C0922D /* ObservableViewController.swift */; };
 		455BB21B2B56493B00C0922D /* CombineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BB21A2B56493B00C0922D /* CombineViewModel.swift */; };
-		455BB21E2B564A2400C0922D /* CombineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BB21D2B564A2400C0922D /* CombineViewController.swift */; };
 		455BB2222B564EAC00C0922D /* ModelTestClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BB2212B564EAC00C0922D /* ModelTestClass.swift */; };
-		455BB2252B564F2F00C0922D /* model.json in Sources */ = {isa = PBXBuildFile; fileRef = 455BB2242B564F2F00C0922D /* model.json */; };
 		455BB22B2B5653E900C0922D /* ViewModelInjectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BB1F92B51E42500C0922D /* ViewModelInjectable.swift */; };
 		455BB22C2B56546D00C0922D /* MusicItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BB1EF2B51BFB900C0922D /* MusicItem.swift */; };
 		455BB22D2B56549000C0922D /* MusicItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BB1EF2B51BFB900C0922D /* MusicItem.swift */; };
@@ -40,6 +36,11 @@
 		455BB2392B566CBF00C0922D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BB2382B566CBF00C0922D /* Extensions.swift */; };
 		455BB23E2B56717B00C0922D /* jsonfile.json in Resources */ = {isa = PBXBuildFile; fileRef = 455BB23D2B56717B00C0922D /* jsonfile.json */; };
 		455BB2402B567FBE00C0922D /* EndPointEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BB23F2B567FBE00C0922D /* EndPointEnum.swift */; };
+		455BB2452B5790C400C0922D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BB2422B5790C400C0922D /* ViewController.swift */; };
+		455BB2462B5790C400C0922D /* ObservableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BB2432B5790C400C0922D /* ObservableViewController.swift */; };
+		455BB2472B5790C400C0922D /* CombineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BB2442B5790C400C0922D /* CombineViewController.swift */; };
+		455BB2482B581DDC00C0922D /* model.json in Resources */ = {isa = PBXBuildFile; fileRef = 455BB2242B564F2F00C0922D /* model.json */; };
+		455BB2492B581DE000C0922D /* model.json in Resources */ = {isa = PBXBuildFile; fileRef = 455BB2242B564F2F00C0922D /* model.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +64,6 @@
 		455BB1AE2B509D6600C0922D /* GenericNetworkLayerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenericNetworkLayerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		455BB1B12B509D6600C0922D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		455BB1B32B509D6600C0922D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		455BB1B52B509D6600C0922D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		455BB1B82B509D6600C0922D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		455BB1BA2B509D6700C0922D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		455BB1BD2B509D6700C0922D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -85,9 +85,7 @@
 		455BB20B2B53579700C0922D /* ImageCacheble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheble.swift; sourceTree = "<group>"; };
 		455BB2102B5637E500C0922D /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		455BB2132B5638C100C0922D /* ObservableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableViewModel.swift; sourceTree = "<group>"; };
-		455BB2152B563A8F00C0922D /* ObservableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ObservableViewController.swift; path = GenericNetworkLayerApp/Cells/ViewController/ObservableViewController.swift; sourceTree = SOURCE_ROOT; };
 		455BB21A2B56493B00C0922D /* CombineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineViewModel.swift; sourceTree = "<group>"; };
-		455BB21D2B564A2400C0922D /* CombineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineViewController.swift; sourceTree = "<group>"; };
 		455BB2212B564EAC00C0922D /* ModelTestClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTestClass.swift; sourceTree = "<group>"; };
 		455BB2242B564F2F00C0922D /* model.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = model.json; sourceTree = "<group>"; };
 		455BB2312B5657AF00C0922D /* modeljson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = modeljson.json; sourceTree = "<group>"; };
@@ -95,6 +93,9 @@
 		455BB2382B566CBF00C0922D /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		455BB23D2B56717B00C0922D /* jsonfile.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = jsonfile.json; sourceTree = "<group>"; };
 		455BB23F2B567FBE00C0922D /* EndPointEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointEnum.swift; sourceTree = "<group>"; };
+		455BB2422B5790C400C0922D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		455BB2432B5790C400C0922D /* ObservableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableViewController.swift; sourceTree = "<group>"; };
+		455BB2442B5790C400C0922D /* CombineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombineViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,10 +152,10 @@
 				455BB1FC2B51E77400C0922D /* ViewModel */,
 				455BB2002B51E92C00C0922D /* Utils */,
 				455BB2042B534BE800C0922D /* Cells */,
-				455BB2182B563AAE00C0922D /* ViewController */,
 				455BB2372B566CBF00C0922D /* Extension */,
 				455BB23A2B56713800C0922D /* Resources */,
 				455BB2342B566BC000C0922D /* CustomViews */,
+				455BB2412B5790C400C0922D /* ViewController */,
 				455BB1B12B509D6600C0922D /* AppDelegate.swift */,
 				455BB1B32B509D6600C0922D /* SceneDelegate.swift */,
 				455BB1B72B509D6600C0922D /* Main.storyboard */,
@@ -241,17 +242,6 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		455BB2182B563AAE00C0922D /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				455BB1B52B509D6600C0922D /* ViewController.swift */,
-				455BB2152B563A8F00C0922D /* ObservableViewController.swift */,
-				455BB21D2B564A2400C0922D /* CombineViewController.swift */,
-			);
-			name = ViewController;
-			path = Cells/ViewController;
-			sourceTree = "<group>";
-		};
 		455BB2232B564F1300C0922D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,6 +273,16 @@
 				455BB23D2B56717B00C0922D /* jsonfile.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		455BB2412B5790C400C0922D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				455BB2422B5790C400C0922D /* ViewController.swift */,
+				455BB2432B5790C400C0922D /* ObservableViewController.swift */,
+				455BB2442B5790C400C0922D /* CombineViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -390,6 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				455BB1BE2B509D6700C0922D /* LaunchScreen.storyboard in Resources */,
+				455BB2482B581DDC00C0922D /* model.json in Resources */,
 				455BB2322B5657AF00C0922D /* modeljson.json in Resources */,
 				455BB1BB2B509D6700C0922D /* Assets.xcassets in Resources */,
 				455BB1B92B509D6600C0922D /* Main.storyboard in Resources */,
@@ -402,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				455BB2332B5657AF00C0922D /* modeljson.json in Resources */,
+				455BB2492B581DE000C0922D /* model.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,7 +422,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				455BB1FE2B51E80000C0922D /* MusicViewModel.swift in Sources */,
-				455BB1B62B509D6600C0922D /* ViewController.swift in Sources */,
+				455BB2462B5790C400C0922D /* ObservableViewController.swift in Sources */,
 				455BB1B22B509D6600C0922D /* AppDelegate.swift in Sources */,
 				455BB2142B5638C100C0922D /* ObservableViewModel.swift in Sources */,
 				455BB2022B51E93D00C0922D /* Constants.swift in Sources */,
@@ -429,17 +431,16 @@
 				455BB2362B566BC000C0922D /* SwiftShadowImageView.swift in Sources */,
 				455BB1F72B51DB2200C0922D /* IdentifiableHashable.swift in Sources */,
 				455BB20C2B53579700C0922D /* ImageCacheble.swift in Sources */,
-				455BB2252B564F2F00C0922D /* model.json in Sources */,
+				455BB2452B5790C400C0922D /* ViewController.swift in Sources */,
 				455BB1E32B5135A500C0922D /* GenericAPI.swift in Sources */,
 				455BB1B42B509D6600C0922D /* SceneDelegate.swift in Sources */,
 				455BB2112B5637E500C0922D /* Observable.swift in Sources */,
 				455BB2392B566CBF00C0922D /* Extensions.swift in Sources */,
 				455BB22C2B56546D00C0922D /* MusicItem.swift in Sources */,
 				455BB1E92B5136BB00C0922D /* HttpClient.swift in Sources */,
-				455BB2162B563A8F00C0922D /* ObservableViewController.swift in Sources */,
 				455BB22B2B5653E900C0922D /* ViewModelInjectable.swift in Sources */,
 				455BB2072B534C6900C0922D /* ModelLisCell.swift in Sources */,
-				455BB21E2B564A2400C0922D /* CombineViewController.swift in Sources */,
+				455BB2472B5790C400C0922D /* CombineViewController.swift in Sources */,
 				455BB1E62B5135B500C0922D /* Endpoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -644,6 +645,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = targeted;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -676,6 +678,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = targeted;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

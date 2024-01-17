@@ -36,10 +36,12 @@ final class ModelTestClass: XCTestCase {
             XCTFail("Missing file name : model.json")
             return
         }
-        let json = try Data(contentsOf: url)
-        let model = try! JSONDecoder().decode(ModelContainer<Model>.self , from: json)
-        XCTAssertEqual(model.results.first?.name , "Rick Sanchez")
-        XCTAssertEqual(model.results.first?.status, "Alive")
+        let jsonData = try Data(contentsOf: url)
+        //let model = try! JSONDecoder().decode(ModelContainer<Model>.self , from: json)
+        XCTAssertNoThrow(try JSONDecoder().decode(ModelContainer<Model>.self, from: jsonData))
+//
+//        XCTAssertEqual(model.results.first?.name , "Rick Sanchez")
+//        XCTAssertEqual(model.results.first?.status, "Alive")
     }
     
     func testModelResponseJSONMapping() {
@@ -52,6 +54,14 @@ final class ModelTestClass: XCTestCase {
         XCTAssertEqual(model.results.first?.name, "Rick Sanchez")
         XCTAssertEqual(model.results.first?.status, "Alive")
     }
+    
+//    func testDecoding() throws {
+//        /// When the Data initializer is throwing an error, the test will fail.
+//        let jsonData = try Data(contentsOf: URL(string: "user.json")!)
+//
+//        /// The `XCTAssertNoThrow` can be used to get extra context about the throw
+//        XCTAssertNoThrow(try JSONDecoder().decode(User.self, from: jsonData))
+//    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.

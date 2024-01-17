@@ -104,3 +104,31 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         return UITableView.automaticDimension
     }
 }
+
+extension ViewController {
+    func actorTesting() async {
+        let logger = TemperatureLogger(label: "ss", measurement: 0)
+        print(await logger.max)
+    }
+    
+}
+
+actor TemperatureLogger {
+    let label: String
+    var measurements: [Int]
+    private(set) var max: Int
+
+
+    init(label: String, measurement: Int) {
+        self.label = label
+        self.measurements = [measurement]
+        self.max = measurement
+    }
+}
+
+/*
+ The type is a value type, and its mutable state is made up of other sendable data — for example, a structure with stored properties that are sendable or an enumeration with associated values that are sendable.
+ The type doesn’t have any mutable state, and its immutable state is made up of other sendable data — for example, a structure or class that has only read-only properties.
+ The type has code that ensures the safety of its mutable state, like a class that’s marked @MainActor or a class that serializes access to its properties on a particular thread or queue.
+ */
+

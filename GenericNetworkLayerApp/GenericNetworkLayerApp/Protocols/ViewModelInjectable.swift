@@ -10,3 +10,4 @@ protocol ViewModelInjectable {
     associatedtype ViewModel
     func configureWithViewModel(_ model : ViewModel)
 }
+

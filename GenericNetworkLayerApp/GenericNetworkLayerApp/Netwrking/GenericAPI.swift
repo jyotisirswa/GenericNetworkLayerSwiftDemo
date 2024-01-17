@@ -37,20 +37,19 @@ enum APIError : Error {
     }
 }
 
-protocol AsyncGenericNetworkLayer {
+protocol AsyncGenericNetworkLayer  {
     var session : URLSession {get}
     func fetchDataFromServer<T : Decodable>(type : T.Type, with request : URLRequest) async throws -> T
     func fetchDataFromJson<T : Decodable>(type : T.Type, with fileName : String, from bundle: Bundle) async throws -> T
 
-}
-extension AsyncGenericNetworkLayer {
-    
 }
 protocol AsyncDownloadImageFromServerProtocol {
     func downloadImage(from urlString: String) async -> UIImage?
 }
 
 extension AsyncGenericNetworkLayer {
+    
+    @MainActor
     func fetchDataFromServer<T : Decodable>(type : T.Type, with request : URLRequest) async throws -> T {
         //1
         print("---Calling api 3--")
@@ -82,6 +81,104 @@ extension AsyncGenericNetworkLayer {
         } catch {
             throw APIError.jsonConversionFailed(description: error.localizedDescription)
         }
+        
+        
+        /*
+         let photos = await withTaskGroup(of: Data.self) { group in
+             let photoNames = await listPhotos(inGallery: "Summer Vacation")
+             for name in photoNames {
+                 group.addTask {
+                     return await downloadPhoto(named: name)
+                 }
+             }
+             var results: [Data] = []
+             for await photo in group {
+                 results.append(photo)
+             }
+             return results
+         }
+         */
+        
+        /*let photos = await withTaskGroup(of: Optional<Data>.self) { group in
+            let photoNames = await listPhotos(inGallery: "Summer Vacation")
+            for name in photoNames {
+                group.addTaskUnlessCancelled {
+                    guard isCancelled == false else { return nil }
+                    return await downloadPhoto(named: name)
+                }
+            }
+
+
+            var results: [Data] = []
+            for await photo in group {
+                if let photo { results.append(photo) }
+            }
+            return results
+         
+         In a parent task, you can’t forget to wait for its child tasks to complete.
+         When setting a higher priority on a child task, the parent task’s priority is automatically escalated.
+         When a parent task is canceled, each of its child tasks is also automatically canceled.
+         Task-local values propagate to child tasks efficiently and automatically.
+         
+         Task.checkCancellation()
+         Task.isCancelled
+         Each task is added using the TaskGroup.addTaskUnlessCancelled(priority:operation:) method, to avoid starting new work after cancellation.
+         let photos = await withTaskGroup(of: Optional<Data>.self) { group in
+             let photoNames = await listPhotos(inGallery: "Summer Vacation")
+             for name in photoNames {
+                 group.addTaskUnlessCancelled {
+                     guard isCancelled == false else { return nil }
+                     return await downloadPhoto(named: name)
+                 }
+             }
+
+
+             var results: [Data] = []
+             for await photo in group {
+                 if let photo { results.append(photo) }
+             }
+             return results
+         }
+         
+         For work that needs immediate notification of cancellation, use the Task.withTaskCancellationHandler(operation:onCancel:) method
+         let task = await Task.withTaskCancellationHandler {
+             // ...
+         } onCancel: {
+             print("Canceled!")
+         }
+
+
+         // ... some time later...
+         task.cancel()
+         
+         Unstructured Concurrency
+         To create an unstructured task that runs on the current actor, call the Task.init(priority:operation:) initializer. To create an unstructured task that’s not part of the current actor, known more specifically as a detached task, call the Task.detached(priority:operation:) class method.
+         
+         
+        } */
     }
-    
 }
+
+
+/*
+ let firstPhoto = await downloadPhoto(named: photoNames[0])
+ let secondPhoto = await downloadPhoto(named: photoNames[1])
+ let thirdPhoto = await downloadPhoto(named: photoNames[2])
+
+
+ let photos = [firstPhoto, secondPhoto, thirdPhoto]
+ show(photos)
+ 
+ async let firstPhoto = downloadPhoto(named: photoNames[0])
+ async let secondPhoto = downloadPhoto(named: photoNames[1])
+ async let thirdPhoto = downloadPhoto(named: photoNames[2])
+
+
+ let photos = await [firstPhoto, secondPhoto, thirdPhoto]
+ show(photos)
+ 
+ Call asynchronous functions with await when the code on the following lines depends on that function’s result. This creates work that is carried out sequentially.
+ Call asynchronous functions with async-let when you don’t need the result until later in your code. This creates work that can be carried out in parallel.
+ Both await and async-let allow other code to run while they’re suspended.
+ In both cases, you mark the possible suspension point with await to indicate that execution will pause, if needed, until an asynchronous function has returned.
+ */
