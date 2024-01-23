@@ -88,7 +88,6 @@ class ModelLisCell: UITableViewCell {
         stackView.spacing = 0
         stackView.axis = .vertical
         stackView.distribution = .equalCentering
-        stackView.backgroundColor = .yellow
         stackView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubviews(profileImageView, stackView, indicatorView)
         stackView.accessibilityIdentifier = "characterImage"
