@@ -81,86 +81,87 @@ extension AsyncGenericNetworkLayer {
         } catch {
             throw APIError.jsonConversionFailed(description: error.localizedDescription)
         }
-        
-        
-        /*
-         let photos = await withTaskGroup(of: Data.self) { group in
-             let photoNames = await listPhotos(inGallery: "Summer Vacation")
-             for name in photoNames {
-                 group.addTask {
-                     return await downloadPhoto(named: name)
-                 }
-             }
-             var results: [Data] = []
-             for await photo in group {
-                 results.append(photo)
-             }
-             return results
-         }
-         */
-        
-        /*let photos = await withTaskGroup(of: Optional<Data>.self) { group in
-            let photoNames = await listPhotos(inGallery: "Summer Vacation")
-            for name in photoNames {
-                group.addTaskUnlessCancelled {
-                    guard isCancelled == false else { return nil }
-                    return await downloadPhoto(named: name)
-                }
-            }
-
-
-            var results: [Data] = []
-            for await photo in group {
-                if let photo { results.append(photo) }
-            }
-            return results
-         
-         In a parent task, you can’t forget to wait for its child tasks to complete.
-         When setting a higher priority on a child task, the parent task’s priority is automatically escalated.
-         When a parent task is canceled, each of its child tasks is also automatically canceled.
-         Task-local values propagate to child tasks efficiently and automatically.
-         
-         Task.checkCancellation()
-         Task.isCancelled
-         Each task is added using the TaskGroup.addTaskUnlessCancelled(priority:operation:) method, to avoid starting new work after cancellation.
-         let photos = await withTaskGroup(of: Optional<Data>.self) { group in
-             let photoNames = await listPhotos(inGallery: "Summer Vacation")
-             for name in photoNames {
-                 group.addTaskUnlessCancelled {
-                     guard isCancelled == false else { return nil }
-                     return await downloadPhoto(named: name)
-                 }
-             }
-
-
-             var results: [Data] = []
-             for await photo in group {
-                 if let photo { results.append(photo) }
-             }
-             return results
-         }
-         
-         For work that needs immediate notification of cancellation, use the Task.withTaskCancellationHandler(operation:onCancel:) method
-         let task = await Task.withTaskCancellationHandler {
-             // ...
-         } onCancel: {
-             print("Canceled!")
-         }
-
-
-         // ... some time later...
-         task.cancel()
-         
-         Unstructured Concurrency
-         To create an unstructured task that runs on the current actor, call the Task.init(priority:operation:) initializer. To create an unstructured task that’s not part of the current actor, known more specifically as a detached task, call the Task.detached(priority:operation:) class method.
-         
-         
-        } */
     }
+        
+        
 }
 
 
 /*
+ /*
+  let photos = await withTaskGroup(of: Data.self) { group in
+      let photoNames = await listPhotos(inGallery: "Summer Vacation")
+      for name in photoNames {
+          group.addTask {
+              return await downloadPhoto(named: name)
+          }
+      }
+      var results: [Data] = []
+      for await photo in group {
+          results.append(photo)
+      }
+      return results
+  }
+  */
+ 
+ /*let photos = await withTaskGroup(of: Optional<Data>.self) { group in
+     let photoNames = await listPhotos(inGallery: "Summer Vacation")
+     for name in photoNames {
+         group.addTaskUnlessCancelled {
+             guard isCancelled == false else { return nil }
+             return await downloadPhoto(named: name)
+         }
+     }
+
+
+     var results: [Data] = []
+     for await photo in group {
+         if let photo { results.append(photo) }
+     }
+     return results
+  
+  In a parent task, you can’t forget to wait for its child tasks to complete.
+  When setting a higher priority on a child task, the parent task’s priority is automatically escalated.
+  When a parent task is canceled, each of its child tasks is also automatically canceled.
+  Task-local values propagate to child tasks efficiently and automatically.
+  
+  Task.checkCancellation()
+  Task.isCancelled
+  Each task is added using the TaskGroup.addTaskUnlessCancelled(priority:operation:) method, to avoid starting new work after cancellation.
+  let photos = await withTaskGroup(of: Optional<Data>.self) { group in
+      let photoNames = await listPhotos(inGallery: "Summer Vacation")
+      for name in photoNames {
+          group.addTaskUnlessCancelled {
+              guard isCancelled == false else { return nil }
+              return await downloadPhoto(named: name)
+          }
+      }
+
+
+      var results: [Data] = []
+      for await photo in group {
+          if let photo { results.append(photo) }
+      }
+      return results
+  }
+  
+  For work that needs immediate notification of cancellation, use the Task.withTaskCancellationHandler(operation:onCancel:) method
+  let task = await Task.withTaskCancellationHandler {
+      // ...
+  } onCancel: {
+      print("Canceled!")
+  }
+
+
+  // ... some time later...
+  task.cancel()
+  
+  Unstructured Concurrency
+  To create an unstructured task that runs on the current actor, call the Task.init(priority:operation:) initializer. To create an unstructured task that’s not part of the current actor, known more specifically as a detached task, call the Task.detached(priority:operation:) class method.
+  
+  
+ } */
+}
  let firstPhoto = await downloadPhoto(named: photoNames[0])
  let secondPhoto = await downloadPhoto(named: photoNames[1])
  let thirdPhoto = await downloadPhoto(named: photoNames[2])
