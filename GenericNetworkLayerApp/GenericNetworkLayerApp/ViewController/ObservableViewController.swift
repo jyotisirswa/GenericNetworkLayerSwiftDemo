@@ -51,7 +51,7 @@ class ObservableViewController: UIViewController {
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
         self.viewModel.employees.bind {[weak self] (_)  in
-            Task { @MainActor in
+            Task { @MainActor in //@MainActor property wrapper to warranty that your code will run on the main thread without even manually specify it
                 self?.showTableView()
             }
             //self?.showTableView()
@@ -71,7 +71,7 @@ class ObservableViewController: UIViewController {
     }
 }
 
-extension ObservableViewController : UITableViewDataSource {
+extension ObservableViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.viewModel.employees.value.count
     }

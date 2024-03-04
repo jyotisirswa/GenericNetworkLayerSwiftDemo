@@ -37,7 +37,7 @@ enum APIError : Error {
     }
 }
 
-protocol AsyncGenericNetworkLayer  {
+protocol AsyncGenericNetworkLayer   {
     var session : URLSession {get}
     func fetchDataFromServer<T : Decodable>(type : T.Type, with request : URLRequest) async throws -> T
     func fetchDataFromJson<T : Decodable>(type : T.Type, with fileName : String, from bundle: Bundle) async throws -> T
@@ -53,7 +53,7 @@ extension AsyncGenericNetworkLayer {
     func fetchDataFromServer<T : Decodable>(type : T.Type, with request : URLRequest) async throws -> T {
         //1
         print("---Calling api 3--")
-        let (data, response) = try await session.data(for: request) //we write await in front of the call to mark the possible suspension point. asynchronours function which return data & response two params. the flow of execution is suspended only when you call another asynchronous method — suspension is never implicit or preemptive — which means every possible suspension point is marked with await.The possible suspension points in your code marked with await indicate that the current piece of code might pause execution while waiting for the asynchronous function or method to return. This is also called yielding the thread because, behind the scenes, Swift suspends the execution of your code on the current thread and runs some other code on that thread instead.
+        let (data, response) = try await session.data(for: request) //this function returns optional data, response & throws error thats why it marked as try //we write await in front of the call to mark the possible suspension point. asynchronours function which return data & response two params. the flow of execution is suspended only when you call another asynchronous method — suspension is never implicit or preemptive — which means every possible suspension point is marked with await.The possible suspension points in your code marked with await indicate that the current piece of code might pause execution while waiting for the asynchronous function or method to return. This is also called yielding the thread because, behind the scenes, Swift suspends the execution of your code on the current thread and runs some other code on that thread instead.
         print("---Calling api 6--")
         guard let httpResponse = response as? HTTPURLResponse else {
             throw APIError.requestFailed(description: request.description)
@@ -61,9 +61,10 @@ extension AsyncGenericNetworkLayer {
         guard httpResponse.statusCode == 200 else {
             throw APIError.responseUnSucessful(description: "\(httpResponse.statusCode)")
         }
-        do {
+        do { //inside this we return docoded value if the decoding is successfull else we throw
             let jsonDecoder = JSONDecoder()
             print("---Calling api 7--")
+            print(try jsonDecoder.decode(type, from: data))
             return try jsonDecoder.decode(type, from: data)
         } catch {
             throw APIError.jsonConversionFailed(description: error.localizedDescription)
@@ -82,8 +83,6 @@ extension AsyncGenericNetworkLayer {
             throw APIError.jsonConversionFailed(description: error.localizedDescription)
         }
     }
-        
-        
 }
 
 
@@ -173,7 +172,6 @@ extension AsyncGenericNetworkLayer {
  async let firstPhoto = downloadPhoto(named: photoNames[0])
  async let secondPhoto = downloadPhoto(named: photoNames[1])
  async let thirdPhoto = downloadPhoto(named: photoNames[2])
-
 
  let photos = await [firstPhoto, secondPhoto, thirdPhoto]
  show(photos)

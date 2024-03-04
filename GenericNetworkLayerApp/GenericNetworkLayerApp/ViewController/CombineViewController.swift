@@ -34,8 +34,13 @@ class CombineViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("view did load")
         setupTableView()
         bindViewModel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("view will load")
     }
     private func setupTableView() {
         navigationItem.title = "List"
@@ -73,7 +78,7 @@ class CombineViewController: UIViewController {
             //                await MainActor.run {
             //                }
             //            }
-            Task { @MainActor in
+            Task { @MainActor in // @MainActor property wrapper to warranty that your code will run on the main thread without even manually specify it
                 self?.showTableView()
             }
         })

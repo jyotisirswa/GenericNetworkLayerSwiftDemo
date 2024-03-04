@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import Combine
 
 class CombineViewModel: ObservableObject {
     private let client = HttpClient()
     private(set) var errorMessage: String?
-    @Published private(set)  var employees: [Model] = []
+    @Published private(set)  var employees: [Model] = [] //employees property will publish the changes from the response using the Combine framework.
     
     private var request : URLRequest = {
         let urlString =  "\(BASE_URL)/character"
